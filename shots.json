@@ -1,5 +1,1 @@
-[
-  { "name": "1-cover.jpg", "query": "?shot=cover&photo=pier&caption=Sunset%20Heist", "w": 1080, "h": 1080 },
-  { "name": "2-editor.jpg", "query": "?shot=editor&photo=boulevard&caption=Boulevard%20Queen", "w": 1280, "h": 720 },
-  { "name": "3-cover.jpg", "query": "?shot=cover&photo=boulevard&caption=Boulevard%20Queen", "w": 1080, "h": 1080 }
-]
+[{"h":720,"name":"01-cover-wide.jpg","query":"?shot=cover&layout=hero-grid&grade=sunset-vice&size=wide&w=1280&h=720&caption=PANEL%20VICE&subtitle=neon%20coast","w":1280},{"h":800,"name":"02-editor.jpg","query":"?shot=editor&layout=vice-classic&grade=neon-nights&size=portrait&caption=VICE%20CLASSIC&subtitle=midnight%20run&select=4","w":1280},{"h":1280,"name":"03-cover-portrait.jpg","query":"?shot=cover&layout=vice-classic&grade=sunset-vice&size=portrait&w=1024&h=1280&caption=PANEL%20VICE&subtitle=neon%20coast","w":1024},{"h":1080,"name":"04-cover-square.jpg","query":"?shot=cover&layout=diagonal-rush&grade=neon-nights&size=square&w=1080&h=1080&caption=DIAGONAL%20RUSH&subtitle=after%20dark","w":1080}]

@@ -3,21 +3,93 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Panel Vice: Cover Studio</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
-  </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
-</main>
+<div class="app" id="appRoot">
+  <aside class="panel" id="controlPanel">
+    <header class="brand">
+      <div class="brand-mark" aria-hidden="true">PV</div>
+      <div>
+        <h1>Panel Vice</h1>
+        <p class="brand-sub">Cover Studio &mdash; multi-panel poster maker</p>
+      </div>
+    </header>
+
+    <section class="group" aria-labelledby="g-words">
+      <h2 id="g-words">Words</h2>
+      <label class="field">Cover title
+        <input id="captionInput" type="text" maxlength="26" value="PANEL VICE" autocomplete="off">
+      </label>
+      <label class="field">Script subtitle
+        <input id="subtitleInput" type="text" maxlength="30" value="neon coast" autocomplete="off">
+      </label>
+      <label class="field range-field">Heat stars <span id="starsValue">5</span>
+        <input id="starsRange" type="range" min="0" max="5" step="1" value="5">
+      </label>
+    </section>
+
+    <section class="group" aria-labelledby="g-layout">
+      <h2 id="g-layout">Panel layout</h2>
+      <div class="chip-grid" id="layoutGrid" role="group" aria-label="Layouts"></div>
+    </section>
+
+    <section class="group" aria-labelledby="g-grade">
+      <h2 id="g-grade">Colour grade</h2>
+      <div class="chip-row" id="gradeRow" role="group" aria-label="Colour grades"></div>
+    </section>
+
+    <section class="group" aria-labelledby="g-scenes">
+      <h2 id="g-scenes">Scene library</h2>
+      <p class="hint">Pick a scene, then it fills the selected panel. Drag on the cover to pan a panel, scroll to zoom it.</p>
+      <div class="scene-grid" id="sceneGrid"></div>
+      <div class="row">
+        <label class="btn file-btn">Your photo
+          <input id="uploadInput" type="file" accept="image/*" hidden>
+        </label>
+        <button class="btn" id="fillAllBtn" type="button">Fill all panels</button>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-panel">
+      <h2 id="g-panel">Selected panel</h2>
+      <p class="hint" id="selectedLabel">Panel 1</p>
+      <label class="field range-field">Zoom <span id="zoomValue">100%</span>
+        <input id="zoomRange" type="range" min="100" max="320" step="2" value="100">
+      </label>
+      <label class="field">Panel grade override
+        <select id="gradeOverrideSel"></select>
+      </label>
+      <div class="row">
+        <button class="btn" id="centerBtn" type="button">Centre frame</button>
+        <button class="btn" id="cycleBtn" type="button">Next scene</button>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-export">
+      <h2 id="g-export">Export</h2>
+      <div class="seg" id="sizeSeg" role="group" aria-label="Export size">
+        <button type="button" data-size="square">1080 &times; 1080</button>
+        <button type="button" data-size="portrait" class="on">1080 &times; 1350</button>
+        <button type="button" data-size="wide">1920 &times; 1080</button>
+      </div>
+      <div class="row">
+        <button class="btn ghost" id="shuffleBtn" type="button">Shuffle scenes</button>
+        <button class="btn ghost" id="surpriseBtn" type="button">Surprise me</button>
+      </div>
+      <button class="btn primary" id="exportBtn" type="button">Export PNG</button>
+      <p class="status" id="statusEl" role="status"></p>
+    </section>
+  </aside>
+
+  <main class="stage-wrap">
+    <div class="stage" id="stageBox">
+      <canvas id="stage" width="864" height="1080" aria-label="Cover preview. Drag a panel to reposition its photo."></canvas>
+    </div>
+    <p class="stage-tip">Tip: click a panel to select it &middot; drag to pan &middot; mouse wheel zooms the selected panel &middot; everything runs offline, photos never leave this machine.</p>
+  </main>
+</div>
 <script type="module" src="./src/main.js"></script>
 </body>
 </html>
